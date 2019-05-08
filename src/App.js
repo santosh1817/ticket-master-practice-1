@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import axios from 'axios'
 
 import TicketTable from './TicketTable'
+import TicketForm from './TicketForm'
 
 class  App extends Component{
   constructor(){
@@ -38,9 +39,13 @@ class  App extends Component{
 
       <h3> Open tickets </h3>
       <TicketTable tickets={ this.state.tickets.filter((ticket)=>ticket.status==='open') } />
+
+      < TicketForm /> 
       
-      <h4> Open tickets </h4>
+      <h3> Close tickets </h3> 
       <TicketTable tickets={ this.state.tickets.filter((ticket)=>ticket.status==='close') } />
+
+      < TicketForm /> 
       
 
     </div>
