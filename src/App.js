@@ -11,6 +11,13 @@ class  App extends Component{
     this.state = {
       tickets : []
     }
+  } 
+  
+  handleSubmit=(ticket)=>{
+    //console.log('app comp',ticket)
+    this.setState((prevState)=>({
+      tickets : prevState.tickets.concat(ticket) 
+    }))
   }
   componentDidMount(){
 
@@ -29,6 +36,7 @@ class  App extends Component{
   }
 
 
+
   render(){
   return (
     <div>
@@ -40,7 +48,7 @@ class  App extends Component{
       <h3> Open tickets </h3>
       <TicketTable tickets={ this.state.tickets.filter((ticket)=>ticket.status==='open') } />
 
-      < TicketForm /> 
+      < TicketForm handleSubmit={ this.handleSubmit } /> 
       
       <h3> Close tickets </h3> 
       <TicketTable tickets={ this.state.tickets.filter((ticket)=>ticket.status==='close') } />

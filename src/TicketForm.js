@@ -55,14 +55,16 @@ class TicketForm extends Component{
               name : this.state.name,
               department : this.state.department,
               priority : this.state.priority,
-              message : this.state.message
+              message : this.state.message,
+              notice : ''
           }
 
           //api post 
           axios.post(`http://dct-api-data.herokuapp.com/tickets?api_key=380d174098e8f3b4`,formData)
             .then(response=>{
 
-                console.log(response.data)
+                //console.log(response.data)
+                this.props.handleSubmit(response.data)
 
                 this.setState(()=>({
                     name:'',department:'',priority : '',message:'',
